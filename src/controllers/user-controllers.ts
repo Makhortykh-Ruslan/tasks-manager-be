@@ -6,21 +6,21 @@ import { EMessages } from '../enums';
 const createUser = async (
   request: Request,
   response: Response
-): Promise<void> => {
+): Promise<Response> => {
   try {
     const user: IUser = await UserModel.create(request.body);
     const token = generateJwtToken(user._id);
 
-    sendResponse(response, 201, { user, token });
+    return sendResponse(response, 201, { user, token });
   } catch (error) {
-    errorResponse(response, 400, error);
+    return errorResponse(response, 400, error);
   }
 };
 
 const login = async (
   request: Request,
   response: Response
-): Promise<Response | void> => {
+): Promise<Response> => {
   try {
     const { email, password } = request.body;
 
@@ -51,33 +51,33 @@ const login = async (
       token,
     };
 
-    sendResponse(response, 200, model);
+    return sendResponse(response, 200, model);
   } catch (error) {
-    errorResponse(response, 400, error);
+    return errorResponse(response, 400, error);
   }
 };
 
 const deleteUser = async (
   request: Request,
   response: Response
-): Promise<void> => {
+): Promise<Response> => {
   try {
     await UserModel.findByIdAndDelete(request.params.id);
-    sendResponse(response, 200, EMessages.USER_WAS_DELETED);
+    return sendResponse(response, 200, EMessages.USER_WAS_DELETED);
   } catch (error) {
-    errorResponse(response, 400, error);
+    return errorResponse(response, 400, error);
   }
 };
 
 const getAllUsers = async (
   request: Request,
   response: Response
-): Promise<void> => {
+): Promise<Response> => {
   try {
     const data = await UserModel.find();
-    sendResponse(response, 200, data);
+    return sendResponse(response, 200, data);
   } catch (error) {
-    errorResponse(response, 400, error);
+    return errorResponse(response, 400, error);
   }
 };
 

@@ -4,19 +4,21 @@ import { EStatuses } from '../enums';
 export const sendResponse = <T>(
   response: Response,
   status: number,
-  model: T
+  model: T,
+  message?: string
 ): Response =>
-    response.status(status).json({
-      status: EStatuses.SUCCESS,
-      model,
-    });
+  response.status(status).json({
+    status: EStatuses.SUCCESS,
+    model,
+    message,
+  });
 
 export const errorResponse = (
   response: Response,
   status: number,
-  error: any
+  message: string
 ): Response =>
   response.status(status).json({
     status: EStatuses.FAILURE,
-    message: error.message,
+    message,
   });

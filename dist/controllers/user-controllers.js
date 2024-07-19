@@ -19,10 +19,10 @@ const createUser = (request, response) => __awaiter(void 0, void 0, void 0, func
     try {
         const user = yield user_model_1.default.create(request.body);
         const token = (0, utils_1.generateJwtToken)(user._id);
-        (0, utils_1.sendResponse)(response, 201, { user, token });
+        return (0, utils_1.sendResponse)(response, 201, { user, token });
     }
     catch (error) {
-        (0, utils_1.errorResponse)(response, 400, error);
+        return (0, utils_1.errorResponse)(response, 400, error);
     }
 });
 const login = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
@@ -45,28 +45,28 @@ const login = (request, response) => __awaiter(void 0, void 0, void 0, function*
             email: user.email,
             token,
         };
-        (0, utils_1.sendResponse)(response, 200, model);
+        return (0, utils_1.sendResponse)(response, 200, model);
     }
     catch (error) {
-        (0, utils_1.errorResponse)(response, 400, error);
+        return (0, utils_1.errorResponse)(response, 400, error);
     }
 });
 const deleteUser = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield user_model_1.default.findByIdAndDelete(request.params.id);
-        (0, utils_1.sendResponse)(response, 200, enums_1.EMessages.USER_WAS_DELETED);
+        return (0, utils_1.sendResponse)(response, 200, enums_1.EMessages.USER_WAS_DELETED);
     }
     catch (error) {
-        (0, utils_1.errorResponse)(response, 400, error);
+        return (0, utils_1.errorResponse)(response, 400, error);
     }
 });
 const getAllUsers = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield user_model_1.default.find();
-        (0, utils_1.sendResponse)(response, 200, data);
+        return (0, utils_1.sendResponse)(response, 200, data);
     }
     catch (error) {
-        (0, utils_1.errorResponse)(response, 400, error);
+        return (0, utils_1.errorResponse)(response, 400, error);
     }
 });
 exports.default = { createUser, login, deleteUser, getAllUsers };

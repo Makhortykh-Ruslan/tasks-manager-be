@@ -8,5 +8,11 @@ var EMessages;
     EMessages["INVALID_CREDENTIALS"] = "Invalid credentials";
     EMessages["PASSWORD_IS_NOT_MATCH"] = "Password is not match";
     EMessages["USER_WAS_DELETED"] = "User was deleted";
+    EMessages["NOT_AUTHORIZED_NO_TOKEN"] = "Not authorized";
+    EMessages["USER_NOT_FOUND"] = "User not found";
+    EMessages["TASK_SUCCESSFULLY_DELETED"] = "Task successfully deleted";
+    EMessages["TASK_SUCCESSFULLY_UPDATED"] = "Task successfully updated";
+    EMessages["TASK_NOT_FOUND"] = "Task not found";
+    EMessages["YOU_DO_NOT_HAVE_PERMISSIONS_TO_DELETE_THIS_TASK"] = "Forbidden: You do not have permission to delete this task";
 })(EMessages || (exports.EMessages = EMessages = {}));
 //# sourceMappingURL=e-messages.js.map
