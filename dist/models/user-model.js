@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
+const enums_1 = require("../enums");
 const UserSchema = new mongoose_1.Schema({
     userName: {
         type: String,
@@ -32,6 +33,11 @@ const UserSchema = new mongoose_1.Schema({
     createdAt: {
         type: Date,
         default: Date.now,
+    },
+    role: {
+        type: String,
+        enum: enums_1.ERoles,
+        required: true,
     },
 });
 UserSchema.pre('save', function (next) {

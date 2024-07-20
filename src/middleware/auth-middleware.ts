@@ -3,14 +3,14 @@ import UserModel from '../models/user-model';
 import { Response, NextFunction } from 'express';
 import { errorResponse } from '../utils';
 import { EMessages } from '../enums';
-import { ICustomUserRequest } from '../interfaces/i-custom-user-request';
+import { IUserRequest } from '../interfaces';
 
 interface MyJwtPayload extends JwtPayload {
   id?: string;
 }
 
 export const userAuthenticator = async (
-  request: ICustomUserRequest,
+  request: IUserRequest,
   response: Response,
   next: NextFunction
 ) => {

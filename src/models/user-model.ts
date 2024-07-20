@@ -1,11 +1,13 @@
 import { Schema, model, Document } from 'mongoose';
 import bcrypt from 'bcryptjs';
+import { ERoles } from '../enums';
 
 export interface IUser extends Document {
   userName: string;
   email: string;
   password: string;
   createdAt: Date;
+  role: ERoles;
   correctPassword(
     candidatePassword: string,
     userPassword: string
@@ -30,6 +32,11 @@ const UserSchema: Schema<IUser> = new Schema({
   createdAt: {
     type: Date,
     default: Date.now,
+  },
+  role: {
+    type: String,
+    enum: ERoles,
+    required: true,
   },
 });
 

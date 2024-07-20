@@ -22,7 +22,7 @@ const createUser = (request, response) => __awaiter(void 0, void 0, void 0, func
         return (0, utils_1.sendResponse)(response, 201, { user, token });
     }
     catch (error) {
-        return (0, utils_1.errorResponse)(response, 400, error);
+        return (0, utils_1.errorResponse)(response, 400, error.message);
     }
 });
 const login = (request, response) => __awaiter(void 0, void 0, void 0, function* () {

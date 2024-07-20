@@ -13,7 +13,7 @@ const createUser = async (
 
     return sendResponse(response, 201, { user, token });
   } catch (error) {
-    return errorResponse(response, 400, error);
+    return errorResponse(response, 400, error.message);
   }
 };
 

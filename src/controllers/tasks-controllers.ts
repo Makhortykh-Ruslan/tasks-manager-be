@@ -1,11 +1,11 @@
 import { Response } from 'express';
 import { errorResponse, sendResponse } from '../utils';
 import TaskModel from '../models/task-model';
-import { ICustomUserRequest } from '../interfaces/i-custom-user-request';
 import { EMessages } from '../enums';
+import { IUserRequest } from '../interfaces';
 
 const createTask = async (
-  request: ICustomUserRequest,
+  request: IUserRequest,
   response: Response
 ): Promise<Response> => {
   try {
@@ -21,7 +21,7 @@ const createTask = async (
 };
 
 const getTasksById = async (
-  request: ICustomUserRequest,
+  request: IUserRequest,
   response: Response
 ): Promise<Response> => {
   try {
@@ -33,7 +33,7 @@ const getTasksById = async (
 };
 
 const deleteTask = async (
-  request: ICustomUserRequest,
+  request: IUserRequest,
   response: Response
 ): Promise<Response> => {
   await TaskModel.findByIdAndDelete(request.params.id);
@@ -41,7 +41,7 @@ const deleteTask = async (
 };
 
 const updateTask = async (
-  request: ICustomUserRequest,
+  request: IUserRequest,
   response: Response
 ): Promise<Response> => {
   const task = await TaskModel.findByIdAndUpdate(

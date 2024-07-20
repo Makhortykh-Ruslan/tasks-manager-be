@@ -10,4 +10,5 @@ export enum EMessages {
   TASK_SUCCESSFULLY_UPDATED = 'Task successfully updated',
   TASK_NOT_FOUND = 'Task not found',
   YOU_DO_NOT_HAVE_PERMISSIONS_TO_DELETE_THIS_TASK = 'Forbidden: You do not have permission to delete this task',
+  YOU_DO_NOT_HAVE_PERMISSIONS_FOR_THIS_ACTION = 'You don`t have permissions for this action!',
 }

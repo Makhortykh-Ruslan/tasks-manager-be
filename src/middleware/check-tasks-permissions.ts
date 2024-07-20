@@ -1,11 +1,16 @@
 import { Response, NextFunction } from 'express';
 import TaskModel from '../models/task-model';
-import { ICustomUserRequest } from '../interfaces/i-custom-user-request';
 import { errorResponse } from '../utils';
 import { EMessages } from '../enums';
+import { IUserRequest } from '../interfaces';
+import mongoose from 'mongoose';
+
+interface ICheckTaskPermission extends IUserRequest {
+  task?: mongoose.Document;
+}
 
 export const checkTaskPermissions = async (
-  request: ICustomUserRequest,
+  request: ICheckTaskPermission,
   response: Response,
   next: NextFunction
 ) => {

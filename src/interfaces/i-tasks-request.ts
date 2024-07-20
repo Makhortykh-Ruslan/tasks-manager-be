@@ -1,7 +1,6 @@
 import { Request } from 'express';
 import mongoose from 'mongoose';
 
-export interface ICustomUserRequest extends Request {
-  user?: mongoose.Document;
+export interface ITasksRequest extends Request {
   task?: mongoose.Document;
 }
