@@ -10,6 +10,5 @@ userRouter
   .route('/:id')
   .delete(userControllers.deleteUser, checkPermissions([ERoles.ADMIN]));
 userRouter.route('/create').post(userControllers.createUser);
-userRouter.route('/login').post(userControllers.login);
 
 export default { userRouter };

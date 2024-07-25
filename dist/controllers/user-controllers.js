@@ -25,32 +25,6 @@ const createUser = (request, response) => __awaiter(void 0, void 0, void 0, func
         return (0, utils_1.errorResponse)(response, 400, error.message);
     }
 });
-const login = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const { email, password } = request.body;
-        if (!email || !password) {
-            return (0, utils_1.errorResponse)(response, 400, !email ? enums_1.EMessages.EMAIL_IS_REQUIRED : enums_1.EMessages.PASSWORD_IS_REQUIRED);
-        }
-        const user = yield user_model_1.default.findOne({ email }).select('+password');
-        if (!user) {
-            return (0, utils_1.errorResponse)(response, 401, enums_1.EMessages.INVALID_CREDENTIALS);
-        }
-        const isPasswordMatch = yield user.correctPassword(password, user.password);
-        if (!isPasswordMatch) {
-            return (0, utils_1.errorResponse)(response, 401, enums_1.EMessages.PASSWORD_IS_NOT_MATCH);
-        }
-        const token = (0, utils_1.generateJwtToken)(user._id);
-        const model = {
-            userName: user.userName,
-            email: user.email,
-            token,
-        };
-        return (0, utils_1.sendResponse)(response, 200, model);
-    }
-    catch (error) {
-        return (0, utils_1.errorResponse)(response, 400, error);
-    }
-});
 const deleteUser = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield user_model_1.default.findByIdAndDelete(request.params.id);
@@ -69,5 +43,5 @@ const getAllUsers = (request, response) => __awaiter(void 0, void 0, void 0, fun
         return (0, utils_1.errorResponse)(response, 400, error);
     }
 });
-exports.default = { createUser, login, deleteUser, getAllUsers };
+exports.default = { createUser, deleteUser, getAllUsers };
 //# sourceMappingURL=user-controllers.js.map

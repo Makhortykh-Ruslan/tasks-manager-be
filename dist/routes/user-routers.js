@@ -13,6 +13,5 @@ userRouter
     .route('/:id')
     .delete(user_controllers_1.default.deleteUser, (0, check_perform_1.checkPermissions)([enums_1.ERoles.ADMIN]));
 userRouter.route('/create').post(user_controllers_1.default.createUser);
-userRouter.route('/login').post(user_controllers_1.default.login);
 exports.default = { userRouter };
 //# sourceMappingURL=user-routers.js.map

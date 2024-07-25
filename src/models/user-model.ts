@@ -1,4 +1,5 @@
 import { Schema, model, Document } from 'mongoose';
+import crypto from 'crypto';
 import bcrypt from 'bcryptjs';
 import { ERoles } from '../enums';
 
@@ -12,6 +13,9 @@ export interface IUser extends Document {
     candidatePassword: string,
     userPassword: string
   ): Promise<boolean>;
+  createPasswordResetToken(): string;
+  passwordResetToken: string;
+  passwordResetExpires: Date;
 }
 
 const UserSchema: Schema<IUser> = new Schema({
@@ -38,6 +42,8 @@ const UserSchema: Schema<IUser> = new Schema({
     enum: ERoles,
     required: true,
   },
+  passwordResetToken: String,
+  passwordResetExpires: Date,
 });
 
 UserSchema.pre('save', async function (next) {
@@ -51,6 +57,17 @@ UserSchema.methods.correctPassword = async (
   userPassword: string
 ) => {
   return await bcrypt.compare(candidatePassword, userPassword);
+};
+
+UserSchema.methods.createPasswordResetToken = function () {
+  const resetToken = crypto.randomBytes(32).toString('hex');
+  this.passwordResetToken = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+
+  this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+  return resetToken;
 };
 
 const UserModel = model<IUser>('User', UserSchema);

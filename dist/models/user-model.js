@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
+const crypto_1 = __importDefault(require("crypto"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const enums_1 = require("../enums");
 const UserSchema = new mongoose_1.Schema({
@@ -39,6 +40,8 @@ const UserSchema = new mongoose_1.Schema({
         enum: enums_1.ERoles,
         required: true,
     },
+    passwordResetToken: String,
+    passwordResetExpires: Date,
 });
 UserSchema.pre('save', function (next) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -51,6 +54,15 @@ UserSchema.pre('save', function (next) {
 UserSchema.methods.correctPassword = (candidatePassword, userPassword) => __awaiter(void 0, void 0, void 0, function* () {
     return yield bcryptjs_1.default.compare(candidatePassword, userPassword);
 });
+UserSchema.methods.createPasswordResetToken = function () {
+    const resetToken = crypto_1.default.randomBytes(32).toString('hex');
+    this.passwordResetToken = crypto_1.default
+        .createHash('sha256')
+        .update(resetToken)
+        .digest('hex');
+    this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+    return resetToken;
+};
 const UserModel = (0, mongoose_1.model)('User', UserSchema);
 exports.default = UserModel;
 //# sourceMappingURL=user-model.js.map
