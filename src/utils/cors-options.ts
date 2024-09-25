@@ -1,4 +1,4 @@
 export const corsOptions = {
-  origin: 'https://tasks-manager-be.vercel.app/',
+  origin: 'http://localhost:4200',
   optionsSuccessStatus: 200,
 }
