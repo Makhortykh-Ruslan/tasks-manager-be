@@ -41,4 +41,15 @@ const getAllUsers = async (
   }
 };
 
-export default { createUser, deleteUser, getAllUsers };
+const getMe = async (
+  request: Request,
+  response: Response
+): Promise<Response> => {
+  try {
+    return sendResponse(response, 200, {});
+  } catch (error) {
+    return errorResponse(response, 400, null);
+  }
+};
+
+export default { createUser, deleteUser, getAllUsers, getMe };

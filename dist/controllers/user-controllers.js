@@ -43,5 +43,13 @@ const getAllUsers = (request, response) => __awaiter(void 0, void 0, void 0, fun
         return (0, utils_1.errorResponse)(response, 400, error);
     }
 });
-exports.default = { createUser, deleteUser, getAllUsers };
+const getMe = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        return (0, utils_1.sendResponse)(response, 200, {});
+    }
+    catch (error) {
+        return (0, utils_1.errorResponse)(response, 400, null);
+    }
+});
+exports.default = { createUser, deleteUser, getAllUsers, getMe };
 //# sourceMappingURL=user-controllers.js.map
