@@ -40,7 +40,6 @@ const UserSchema: Schema<IUser> = new Schema({
   role: {
     type: String,
     enum: ERoles,
-    required: true,
   },
   passwordResetToken: String,
   passwordResetExpires: Date,

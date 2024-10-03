@@ -24,7 +24,7 @@ const login = (request, response) => __awaiter(void 0, void 0, void 0, function*
         }
         const user = yield user_model_1.default.findOne({ email }).select('+password');
         if (!user) {
-            return (0, utils_1.errorResponse)(response, 401, enums_1.EMessages.INVALID_CREDENTIALS);
+            return (0, utils_1.errorResponse)(response, 401, enums_1.EMessages.USER_NOT_FOUND);
         }
         const isPasswordMatch = yield user.correctPassword(password, user.password);
         if (!isPasswordMatch) {

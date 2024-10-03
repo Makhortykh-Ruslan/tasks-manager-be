@@ -38,7 +38,6 @@ const UserSchema = new mongoose_1.Schema({
     role: {
         type: String,
         enum: enums_1.ERoles,
-        required: true,
     },
     passwordResetToken: String,
     passwordResetExpires: Date,

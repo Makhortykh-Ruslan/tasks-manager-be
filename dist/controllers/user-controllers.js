@@ -17,9 +17,10 @@ const utils_1 = require("../utils");
 const enums_1 = require("../enums");
 const createUser = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const user = yield user_model_1.default.create(request.body);
+        const result = Object.assign(Object.assign({}, request.body), { role: enums_1.ERoles.USER });
+        const user = yield user_model_1.default.create(result);
         const token = (0, utils_1.generateJwtToken)(user._id);
-        return (0, utils_1.sendResponse)(response, 201, { user, token });
+        return (0, utils_1.sendResponse)(response, 201, { token });
     }
     catch (error) {
         return (0, utils_1.errorResponse)(response, 400, error.message);
@@ -45,7 +46,8 @@ const getAllUsers = (request, response) => __awaiter(void 0, void 0, void 0, fun
 });
 const getMe = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        return (0, utils_1.sendResponse)(response, 200, {});
+        console.log('hello', request.user);
+        return (0, utils_1.sendResponse)(response, 200, request.user);
     }
     catch (error) {
         return (0, utils_1.errorResponse)(response, 400, null);

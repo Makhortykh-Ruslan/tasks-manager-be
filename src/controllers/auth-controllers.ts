@@ -23,7 +23,7 @@ const login = async (
     const user: IUser = await UserModel.findOne({ email }).select('+password');
 
     if (!user) {
-      return errorResponse(response, 401, EMessages.INVALID_CREDENTIALS);
+      return errorResponse(response, 401, EMessages.USER_NOT_FOUND);
     }
 
     const isPasswordMatch = await user.correctPassword(password, user.password);

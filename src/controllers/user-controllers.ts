@@ -1,17 +1,23 @@
 import UserModel, { IUser } from '../models/user-model';
 import { Response, Request } from 'express';
 import { generateJwtToken, errorResponse, sendResponse } from '../utils';
-import { EMessages } from '../enums';
+import { EMessages, ERoles } from '../enums';
+import { IUserRequest } from '../interfaces';
 
 const createUser = async (
   request: Request,
   response: Response
 ): Promise<Response> => {
   try {
-    const user: IUser = await UserModel.create(request.body);
+    const result = {
+      ...request.body,
+      role: ERoles.USER,
+    };
+
+    const user: IUser = await UserModel.create(result);
     const token = generateJwtToken(user._id);
 
-    return sendResponse(response, 201, { user, token });
+    return sendResponse(response, 201, { token });
   } catch (error) {
     return errorResponse(response, 400, error.message);
   }
@@ -42,11 +48,13 @@ const getAllUsers = async (
 };
 
 const getMe = async (
-  request: Request,
+  request: IUserRequest,
   response: Response
 ): Promise<Response> => {
   try {
-    return sendResponse(response, 200, {});
+    console.log('hello', request.user);
+
+    return sendResponse(response, 200, request.user);
   } catch (error) {
     return errorResponse(response, 400, null);
   }
