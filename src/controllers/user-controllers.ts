@@ -52,8 +52,6 @@ const getMe = async (
   response: Response
 ): Promise<Response> => {
   try {
-    console.log('hello', request.user);
-
     return sendResponse(response, 200, request.user);
   } catch (error) {
     return errorResponse(response, 400, null);

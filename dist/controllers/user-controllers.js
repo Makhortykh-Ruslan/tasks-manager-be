@@ -46,7 +46,6 @@ const getAllUsers = (request, response) => __awaiter(void 0, void 0, void 0, fun
 });
 const getMe = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        console.log('hello', request.user);
         return (0, utils_1.sendResponse)(response, 200, request.user);
     }
     catch (error) {
