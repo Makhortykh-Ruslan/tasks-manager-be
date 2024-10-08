@@ -21,7 +21,7 @@ export const checkTaskPermissions = async (
       return errorResponse(response, 404, EMessages.TASK_NOT_FOUND);
     }
 
-    if (task.user.toString() !== request.user._id.toString()) {
+    if (task.id.toString() !== request.user._id.toString()) {
       return errorResponse(
         response,
         403,

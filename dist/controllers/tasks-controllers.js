@@ -17,8 +17,8 @@ const task_model_1 = __importDefault(require("../models/task-model"));
 const enums_1 = require("../enums");
 const createTask = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const data = yield task_model_1.default.create(Object.assign(Object.assign({}, request.body), { user: request.user._id }));
-        return (0, utils_1.sendResponse)(response, 201, data);
+        const data = yield task_model_1.default.create(Object.assign(Object.assign({}, request.body), { user: request.id }));
+        return (0, utils_1.sendResponse)(response, 201, data, enums_1.EMessages.NOTE_ADDED);
     }
     catch (error) {
         return (0, utils_1.errorResponse)(response, 400, error);
@@ -26,7 +26,7 @@ const createTask = (request, response) => __awaiter(void 0, void 0, void 0, func
 });
 const getTasksById = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const data = yield task_model_1.default.find({ user: request.user._id });
+        const data = yield task_model_1.default.find({ userId: request.user._id });
         return (0, utils_1.sendResponse)(response, 201, data);
     }
     catch (error) {

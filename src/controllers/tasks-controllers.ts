@@ -2,19 +2,19 @@ import { Response } from 'express';
 import { errorResponse, sendResponse } from '../utils';
 import TaskModel from '../models/task-model';
 import { EMessages } from '../enums';
-import { IUserRequest } from '../interfaces';
+import { ITasksRequest, IUserRequest } from '../interfaces';
 
 const createTask = async (
-  request: IUserRequest,
+  request: ITasksRequest,
   response: Response
 ): Promise<Response> => {
   try {
     const data = await TaskModel.create({
       ...request.body,
-      user: request.user._id,
+      user: request.id,
     });
 
-    return sendResponse(response, 201, data);
+    return sendResponse(response, 201, data, EMessages.NOTE_ADDED);
   } catch (error) {
     return errorResponse(response, 400, error);
   }
@@ -25,7 +25,7 @@ const getTasksById = async (
   response: Response
 ): Promise<Response> => {
   try {
-    const data = await TaskModel.find({ user: request.user._id });
+    const data = await TaskModel.find({ userId: request.user._id });
     return sendResponse(response, 201, data);
   } catch (error) {
     return errorResponse(response, 400, error);

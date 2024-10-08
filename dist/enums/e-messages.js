@@ -15,5 +15,6 @@ var EMessages;
     EMessages["TASK_NOT_FOUND"] = "Task not found";
     EMessages["YOU_DO_NOT_HAVE_PERMISSIONS_TO_DELETE_THIS_TASK"] = "Forbidden: You do not have permission to delete this task";
     EMessages["YOU_DO_NOT_HAVE_PERMISSIONS_FOR_THIS_ACTION"] = "You don`t have permissions for this action!";
+    EMessages["NOTE_ADDED"] = "Note successfully added";
 })(EMessages || (exports.EMessages = EMessages = {}));
 //# sourceMappingURL=e-messages.js.map
