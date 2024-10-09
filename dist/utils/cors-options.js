@@ -7,5 +7,7 @@ exports.corsOptions = {
         'https://makhortykh-ruslan.github.io/tasks-manager-fe/',
     ],
     optionsSuccessStatus: 200,
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    allowedHeaders: 'Content-Type,Authorization',
 };
 //# sourceMappingURL=cors-options.js.map
