@@ -18,7 +18,7 @@ if (process.env.NODDE_ENV === 'development') {
 
 app.use(json());
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+// app.options('*', cors(corsOptions));
 app.use('/api/v1/user', userRouters.userRouter);
 app.use('/api/v1/auth', authRoutes.authRouter);
 app.use('/api/v1/tasks', tasksRouters.tasksRouter);
