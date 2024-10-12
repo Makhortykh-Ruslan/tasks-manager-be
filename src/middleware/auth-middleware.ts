@@ -33,7 +33,7 @@ export const userAuthenticator = async (
       request.user = user;
       next();
     } catch (error) {
-      return errorResponse(response, 401, error);
+      return errorResponse(response, 401, EMessages.NOT_AUTHORIZED_NO_TOKEN);
     }
   } else {
     errorResponse(response, 401, EMessages.NOT_AUTHORIZED_NO_TOKEN);

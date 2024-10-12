@@ -6,7 +6,7 @@ export enum EMessages {
   USER_WAS_DELETED = 'User was deleted',
   NOT_AUTHORIZED_NO_TOKEN = 'Not authorized',
   USER_NOT_FOUND = 'User not found',
-  TASK_SUCCESSFULLY_DELETED = 'Task successfully deleted',
+  NOTE_SUCCESSFULLY_DELETED = 'Note successfully deleted',
   TASK_SUCCESSFULLY_UPDATED = 'Task successfully updated',
   TASK_NOT_FOUND = 'Task not found',
   YOU_DO_NOT_HAVE_PERMISSIONS_TO_DELETE_THIS_TASK = 'Forbidden: You do not have permission to delete this task',

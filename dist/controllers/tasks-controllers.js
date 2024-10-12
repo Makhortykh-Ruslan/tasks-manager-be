@@ -27,7 +27,7 @@ const createTask = (request, response) => __awaiter(void 0, void 0, void 0, func
 const getTasksById = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield task_model_1.default.find({ userId: request.user._id });
-        return (0, utils_1.sendResponse)(response, 201, data);
+        return (0, utils_1.sendResponse)(response, 201, data, '');
     }
     catch (error) {
         return (0, utils_1.errorResponse)(response, 400, error);
@@ -35,7 +35,7 @@ const getTasksById = (request, response) => __awaiter(void 0, void 0, void 0, fu
 });
 const deleteTask = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     yield task_model_1.default.findByIdAndDelete(request.params.id);
-    return (0, utils_1.sendResponse)(response, 200, enums_1.EMessages.TASK_SUCCESSFULLY_DELETED);
+    return (0, utils_1.sendResponse)(response, 200, null, enums_1.EMessages.NOTE_SUCCESSFULLY_DELETED);
 });
 const updateTask = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
     const task = yield task_model_1.default.findByIdAndUpdate(request.params.id, request.body).lean();

@@ -10,7 +10,7 @@ var EMessages;
     EMessages["USER_WAS_DELETED"] = "User was deleted";
     EMessages["NOT_AUTHORIZED_NO_TOKEN"] = "Not authorized";
     EMessages["USER_NOT_FOUND"] = "User not found";
-    EMessages["TASK_SUCCESSFULLY_DELETED"] = "Task successfully deleted";
+    EMessages["NOTE_SUCCESSFULLY_DELETED"] = "Note successfully deleted";
     EMessages["TASK_SUCCESSFULLY_UPDATED"] = "Task successfully updated";
     EMessages["TASK_NOT_FOUND"] = "Task not found";
     EMessages["YOU_DO_NOT_HAVE_PERMISSIONS_TO_DELETE_THIS_TASK"] = "Forbidden: You do not have permission to delete this task";

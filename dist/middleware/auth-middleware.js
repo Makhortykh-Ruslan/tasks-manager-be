@@ -32,7 +32,7 @@ const userAuthenticator = (request, response, next) => __awaiter(void 0, void 0,
             next();
         }
         catch (error) {
-            return (0, utils_1.errorResponse)(response, 401, error);
+            return (0, utils_1.errorResponse)(response, 401, enums_1.EMessages.NOT_AUTHORIZED_NO_TOKEN);
         }
     }
     else {

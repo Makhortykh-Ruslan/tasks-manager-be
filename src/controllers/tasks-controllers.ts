@@ -26,7 +26,7 @@ const getTasksById = async (
 ): Promise<Response> => {
   try {
     const data = await TaskModel.find({ userId: request.user._id });
-    return sendResponse(response, 201, data);
+    return sendResponse(response, 201, data, '');
   } catch (error) {
     return errorResponse(response, 400, error);
   }
@@ -37,7 +37,7 @@ const deleteTask = async (
   response: Response
 ): Promise<Response> => {
   await TaskModel.findByIdAndDelete(request.params.id);
-  return sendResponse(response, 200, EMessages.TASK_SUCCESSFULLY_DELETED);
+  return sendResponse(response, 200, null, EMessages.NOTE_SUCCESSFULLY_DELETED);
 };
 
 const updateTask = async (

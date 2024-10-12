@@ -22,7 +22,7 @@ const checkTaskPermissions = (request, response, next) => __awaiter(void 0, void
         if (!task) {
             return (0, utils_1.errorResponse)(response, 404, enums_1.EMessages.TASK_NOT_FOUND);
         }
-        if (task.id.toString() !== request.user._id.toString()) {
+        if (task.userId.toString() !== request.user._id.toString()) {
             return (0, utils_1.errorResponse)(response, 403, enums_1.EMessages.YOU_DO_NOT_HAVE_PERMISSIONS_TO_DELETE_THIS_TASK);
         }
         request.task = task;
