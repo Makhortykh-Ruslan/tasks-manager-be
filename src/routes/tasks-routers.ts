@@ -10,8 +10,11 @@ tasksRouter
   .post(userAuthenticator, tasksControllers.createTask);
 
 tasksRouter
+  .route('/update')
+  .post(userAuthenticator, tasksControllers.updateNote);
+
+tasksRouter
   .route('/:id')
-  .patch(userAuthenticator, checkTaskPermissions, tasksControllers.updateTask)
   .delete(userAuthenticator, checkTaskPermissions, tasksControllers.deleteTask);
 
 export default { tasksRouter };

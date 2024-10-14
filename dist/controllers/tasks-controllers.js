@@ -21,7 +21,7 @@ const createTask = (request, response) => __awaiter(void 0, void 0, void 0, func
         return (0, utils_1.sendResponse)(response, 201, data, enums_1.EMessages.NOTE_ADDED);
     }
     catch (error) {
-        return (0, utils_1.errorResponse)(response, 400, error);
+        return (0, utils_1.errorResponse)(response, 400, error.message);
     }
 });
 const getTasksById = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
@@ -37,9 +37,9 @@ const deleteTask = (request, response) => __awaiter(void 0, void 0, void 0, func
     yield task_model_1.default.findByIdAndDelete(request.params.id);
     return (0, utils_1.sendResponse)(response, 200, null, enums_1.EMessages.NOTE_SUCCESSFULLY_DELETED);
 });
-const updateTask = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
-    const task = yield task_model_1.default.findByIdAndUpdate(request.params.id, request.body).lean();
-    return (0, utils_1.sendResponse)(response, 200, task, enums_1.EMessages.TASK_SUCCESSFULLY_UPDATED);
+const updateNote = (request, response) => __awaiter(void 0, void 0, void 0, function* () {
+    const task = yield task_model_1.default.findByIdAndUpdate(request.body._id, request.body).lean();
+    return (0, utils_1.sendResponse)(response, 200, task, enums_1.EMessages.NOTE_SUCCESSFULLY_UPDATED);
 });
-exports.default = { createTask, getTasksById, deleteTask, updateTask };
+exports.default = { createTask, getTasksById, deleteTask, updateNote };
 //# sourceMappingURL=tasks-controllers.js.map

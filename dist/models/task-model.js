@@ -7,6 +7,7 @@ const TaskSchema = new mongoose_1.Schema({
     dueDate: { type: Date },
     status: { type: String, default: 'active' },
     userId: { type: String, required: true },
+    dragPosition: { type: Object, required: true },
 });
 const TaskModel = (0, mongoose_1.model)('Task', TaskSchema);
 exports.default = TaskModel;

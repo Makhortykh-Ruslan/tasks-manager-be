@@ -16,7 +16,7 @@ const createTask = async (
 
     return sendResponse(response, 201, data, EMessages.NOTE_ADDED);
   } catch (error) {
-    return errorResponse(response, 400, error);
+    return errorResponse(response, 400, error.message);
   }
 };
 
@@ -40,15 +40,15 @@ const deleteTask = async (
   return sendResponse(response, 200, null, EMessages.NOTE_SUCCESSFULLY_DELETED);
 };
 
-const updateTask = async (
+const updateNote = async (
   request: IUserRequest,
   response: Response
 ): Promise<Response> => {
   const task = await TaskModel.findByIdAndUpdate(
-    request.params.id,
+    request.body._id,
     request.body
   ).lean();
-  return sendResponse(response, 200, task, EMessages.TASK_SUCCESSFULLY_UPDATED);
+  return sendResponse(response, 200, task, EMessages.NOTE_SUCCESSFULLY_UPDATED);
 };
 
-export default { createTask, getTasksById, deleteTask, updateTask };
+export default { createTask, getTasksById, deleteTask, updateNote };

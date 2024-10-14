@@ -7,7 +7,7 @@ export enum EMessages {
   NOT_AUTHORIZED_NO_TOKEN = 'Not authorized',
   USER_NOT_FOUND = 'User not found',
   NOTE_SUCCESSFULLY_DELETED = 'Note successfully deleted',
-  TASK_SUCCESSFULLY_UPDATED = 'Task successfully updated',
+  NOTE_SUCCESSFULLY_UPDATED = 'Note successfully updated',
   TASK_NOT_FOUND = 'Task not found',
   YOU_DO_NOT_HAVE_PERMISSIONS_TO_DELETE_THIS_TASK = 'Forbidden: You do not have permission to delete this task',
   YOU_DO_NOT_HAVE_PERMISSIONS_FOR_THIS_ACTION = 'You don`t have permissions for this action!',

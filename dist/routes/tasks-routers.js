@@ -12,8 +12,10 @@ tasksRouter
     .get(middleware_1.userAuthenticator, tasks_controllers_1.default.getTasksById)
     .post(middleware_1.userAuthenticator, tasks_controllers_1.default.createTask);
 tasksRouter
+    .route('/update')
+    .post(middleware_1.userAuthenticator, tasks_controllers_1.default.updateNote);
+tasksRouter
     .route('/:id')
-    .patch(middleware_1.userAuthenticator, middleware_1.checkTaskPermissions, tasks_controllers_1.default.updateTask)
     .delete(middleware_1.userAuthenticator, middleware_1.checkTaskPermissions, tasks_controllers_1.default.deleteTask);
 exports.default = { tasksRouter };
 //# sourceMappingURL=tasks-routers.js.map

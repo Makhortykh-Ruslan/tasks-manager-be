@@ -7,6 +7,7 @@ export interface ITask extends Document {
   status: string;
   createdAt: Date;
   userId: string;
+  dragPosition: { x: number; y: number };
 }
 
 const TaskSchema: Schema<ITask> = new Schema({
@@ -15,6 +16,7 @@ const TaskSchema: Schema<ITask> = new Schema({
   dueDate: { type: Date },
   status: { type: String, default: 'active' },
   userId: { type: String, required: true },
+  dragPosition: { type: Object, required: true },
 });
 
 const TaskModel = model<ITask>('Task', TaskSchema);
