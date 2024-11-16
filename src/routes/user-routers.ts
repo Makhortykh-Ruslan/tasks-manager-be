@@ -6,7 +6,7 @@ import { userAuthenticator } from '../middleware';
 
 const userRouter: Router = express.Router();
 
-userRouter.route('/').get(userControllers.getAllUsers);
+userRouter.route('/all').get(userControllers.getAllUsers);
 userRouter
   .route('/:id')
   .delete(userControllers.deleteUser, checkPermissions([ERoles.ADMIN]));

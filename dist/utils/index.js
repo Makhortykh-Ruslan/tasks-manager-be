@@ -16,5 +16,4 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./response-handlers"), exports);
 __exportStar(require("./generate-token"), exports);
-__exportStar(require("./email"), exports);
 //# sourceMappingURL=index.js.map

@@ -1,8 +1,8 @@
 import UserModel, { IUser } from '../models/user-model';
 import { Response, Request } from 'express';
 import { generateJwtToken, errorResponse, sendResponse } from '../utils';
-import { EMessages, ERoles } from '../enums';
 import { IUserRequest } from '../interfaces';
+import { EMessages, ERoles } from '../enums';
 
 const createUser = async (
   request: Request,

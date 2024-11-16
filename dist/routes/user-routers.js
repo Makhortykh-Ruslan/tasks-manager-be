@@ -9,7 +9,7 @@ const check_perform_1 = require("../middleware/check-perform");
 const enums_1 = require("../enums");
 const middleware_1 = require("../middleware");
 const userRouter = express_1.default.Router();
-userRouter.route('/').get(user_controllers_1.default.getAllUsers);
+userRouter.route('/all').get(user_controllers_1.default.getAllUsers);
 userRouter
     .route('/:id')
     .delete(user_controllers_1.default.deleteUser, (0, check_perform_1.checkPermissions)([enums_1.ERoles.ADMIN]));

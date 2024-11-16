@@ -3,7 +3,6 @@ import { errorResponse, generateJwtToken, sendResponse } from '../utils';
 import { EMessages } from '../enums';
 import { IUser } from '../models';
 import UserModel from '../models/user-model';
-import sendEmail from '../utils/email';
 
 const login = async (
   request: Request,
@@ -45,38 +44,4 @@ const login = async (
   }
 };
 
-const forgotPassword = async (
-  request: Request,
-  response: Response
-): Promise<Response> => {
-  const user = await UserModel.findOne({ email: request.body.email });
-
-  if (!user) {
-    return errorResponse(response, 404, EMessages.USER_NOT_FOUND);
-  }
-
-  try {
-    const resetToken = user.createPasswordResetToken();
-    await user.save({ validateBeforeSave: false });
-
-    const resetUrl = `${request.protocol}://${request.get('host')}/api/v1/auth/resetPassword/${resetToken}`;
-
-    const message = `Hi, if you forgot your password/ you can reset, just click this link ${resetUrl}`;
-
-    await sendEmail({
-      email: user.email,
-      subject: 'Your password reset token',
-      message,
-    });
-
-    return sendResponse(response, 200, {
-      message: 'Token was send in your email !!!',
-    });
-  } catch (error) {
-    return errorResponse(response, 400, error);
-  }
-};
-
-const resetPassword = (request: Request, response: Response): void => {};
-
-export default { login, forgotPassword, resetPassword };
+export default { login };
